@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens ---------- */
+:root {
+  --radius: 1rem;
+
+  --background: #fafafa;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-foreground: #18181b;
+  --primary: #6d28d9; /* flat brand violet: white text = 7.1:1 */
+  --primary-hover: #5b21b6;
+  --primary-foreground: #ffffff;
+  --muted: #f4f4f5;
+  --muted-foreground: #52525b;
+  --border: #e4e4e7;
+  --ring: #6d28d9;
+}
+
+@theme inline {
+  --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", "Fraunces", Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --color-ink: #18181b;
+  --color-body: #3f3f46;
+  --color-soft: #52525b;
+  --color-tint: #f5f3ff; /* very light violet, for one highlight per section */
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: var(--radius);
+  --radius-xl: 1.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+  body {
+    @apply bg-background font-sans text-body antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    @apply text-ink;
+  }
+  ::selection {
+    background: rgb(109 40 217 / 0.15);
+  }
+}
+
+@layer components {
+  .display {
+    @apply font-medium tracking-[-0.02em];
+  }
+  .surface {
+    @apply rounded-xl border border-border bg-card;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
